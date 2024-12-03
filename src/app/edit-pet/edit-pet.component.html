@@ -1,0 +1,48 @@
+<div class="profile-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <ul>
+      <li><a routerLink="/profile">Profile</a></li>
+      <li><a routerLink="/my-pets">My Pets</a></li>
+      <li><a routerLink="/rendezvous">Appointments</a></li>
+      <li ><a routerLink="/add-pet">Add New Pet</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="profile-content">
+    <h2>Edit Pet</h2>
+    <form (ngSubmit)="savePet()">
+      <div class="form-group">
+        <label for="petName">Name</label>
+        <input type="text" id="petName" [(ngModel)]="petName" name="petName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="petSpecies">Species</label>
+        <input type="text" id="petSpecies" [(ngModel)]="petSpecies" name="petSpecies" required />
+      </div>
+
+      <div class="form-group">
+        <label for="petAge">Age</label>
+        <input type="number" id="petAge" [(ngModel)]="petAge" name="petAge" required />
+      </div>
+
+      <div class="form-group">
+        <label for="petSpecificNeeds">Specific Needs</label>
+        <textarea id="petSpecificNeeds" [(ngModel)]="petSpecificNeeds" name="petSpecificNeeds" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="petGuardType">Guard Type</label>
+        <select id="petGuardType" [(ngModel)]="petGuardType" name="petGuardType" required>
+          <option value="temporary">Temporary</option>
+          <option value="definitive">Definitive</option>
+        </select>
+      </div>
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+</div>

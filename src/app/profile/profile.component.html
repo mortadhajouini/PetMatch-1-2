@@ -1,0 +1,24 @@
+<div class="profile-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <ul>
+      <li><a routerLink="/profile">Profile</a></li>
+      <li><a routerLink="/my-pets">My Pets</a></li>
+      <li><a routerLink="/rendezvous">Appointments</a></li>
+      <li *ngIf="isOwner"><a routerLink="/add-pet">Add New Pet</a></li>
+      <li *ngIf="isManager"><a routerLink="/adoption-management">Animal Adoption</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="profile-content">
+    <h2>User Profile</h2>
+    <div class="profile-details">
+      <p><strong>Name:</strong> {{ userName }}</p>
+      <p><strong>Email:</strong> {{ userEmail }}</p>
+      <p><strong>Role:</strong> {{ userRole }}</p>
+      <button routerLink="/edit-profile">Edit Profile</button>
+    </div>
+  </div>
+</div>

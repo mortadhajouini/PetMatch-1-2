@@ -1,0 +1,37 @@
+<div class="profile-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <ul>
+      <li><a routerLink="/profile">Profile</a></li>
+      <li><a routerLink="/my-pets">My Pets</a></li>
+      <li><a routerLink="/rendezvous">Appointments</a></li>
+      <li *ngIf="isOwner"><a routerLink="/add-pet">Add New Pet</a></li>
+      <li *ngIf="isManager"><a routerLink="/adoption-management">Animal Adoption</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="profile-content">
+    <h2>My Pets</h2>
+
+    <!-- Liste des animaux -->
+    <div *ngIf="pets.length > 0; else noPets">
+      <div class="pet-card" *ngFor="let pet of pets">
+        <div class="pet-info">
+          <h3>{{ pet.name }}</h3>
+          <p><strong>Species:</strong> {{ pet.species }}</p>
+          <p><strong>Age:</strong> {{ pet.age }} years</p>
+          <p><strong>Specific Needs:</strong> {{ pet.specificNeeds }}</p>
+          <p><strong>Guard Type:</strong> {{ pet.guardType === 'temporary' ? 'Temporary' : 'Definitive' }}</p>
+        </div>
+        <button (click)="editPet(pet.id)">Edit</button>
+        <button (click)="removePet(pet.id)">Remove</button>
+      </div>
+    </div>
+
+    <ng-template #noPets>
+      <p>You have no pets added yet. <a routerLink="/add-pet">Add a pet now!</a></p>
+    </ng-template>
+  </div>
+</div>

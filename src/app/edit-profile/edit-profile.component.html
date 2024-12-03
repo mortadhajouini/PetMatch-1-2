@@ -1,0 +1,40 @@
+<div class="profile-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <ul>
+      <li><a routerLink="/profile">Profile</a></li>
+      <li><a routerLink="/my-pets">My Pets</a></li>
+      <li><a routerLink="/rendezvous">Appointments</a></li>
+      <li *ngIf="isOwner"><a routerLink="/add-pet">Add New Pet</a></li>
+      <li *ngIf="isManager"><a routerLink="/adoption-management">Animal Adoption</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="profile-content">
+    <h2>Edit Profile</h2>
+    <form (ngSubmit)="saveProfile()">
+      <div class="form-group">
+        <label for="userName">Name</label>
+        <input type="text" id="userName" [(ngModel)]="userName" name="userName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="userEmail">Email</label>
+        <input type="email" id="userEmail" [(ngModel)]="userEmail" name="userEmail" required />
+      </div>
+
+      <div class="form-group">
+        <label for="userRole">Role</label>
+        <select id="userRole" [(ngModel)]="userRole" name="userRole">
+          <option value="Owner">Owner</option>
+          <option value="Manager">Manager</option>
+        </select>
+      </div>
+
+      <button type="submit">Save Changes</button>
+      <button type="button" (click)="cancelEditing()">Cancel</button>
+    </form>
+  </div>
+</div>
